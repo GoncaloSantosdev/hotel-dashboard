@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // React Query
 import { useQuery } from "@tanstack/react-query";
 // API
@@ -13,7 +14,7 @@ const CabinTable = () => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["cabin"],
+    queryKey: ["cabins"],
     queryFn: getCabins,
   });
 
