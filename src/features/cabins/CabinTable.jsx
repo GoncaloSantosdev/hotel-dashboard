@@ -18,7 +18,6 @@ const CabinTable = () => {
     queryFn: getCabins,
   });
 
-  console.log(cabins);
   if (isLoading) return <Spinner />;
 
   return (
@@ -32,9 +31,9 @@ const CabinTable = () => {
         <div></div>
       </TableHeader>
       {cabins.map((cabin) => (
-        <>
-          <CabinRow cabin={cabin} key={cabin.id} />
-        </>
+        <div key={cabin.id}>
+          <CabinRow cabin={cabin} />
+        </div>
       ))}
     </Table>
   );
