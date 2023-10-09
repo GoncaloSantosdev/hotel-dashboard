@@ -11,7 +11,7 @@ import FormRow from "../../ui/FormRow";
 import { useForm } from "react-hook-form";
 import { createCabin } from "../../services/apiCabins";
 
-const CreateCabinForm = () => {
+function CreateCabinForm() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
@@ -32,7 +32,7 @@ const CreateCabinForm = () => {
   }
 
   function onError(errors) {
-    console.log(errors);
+    // console.log(errors);
   }
 
   return (
@@ -128,6 +128,6 @@ const CreateCabinForm = () => {
       </FormRow>
     </Form>
   );
-};
+}
 
 export default CreateCabinForm;

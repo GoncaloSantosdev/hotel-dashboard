@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiEllipsisVertical } from "react-icons/hi2";
@@ -68,7 +67,7 @@ const StyledButton = styled.button`
 
 const MenusContext = createContext();
 
-const Menus = ({ children }) => {
+function Menus({ children }) {
   const [openId, setOpenId] = useState("");
   const [position, setPosition] = useState(null);
 
@@ -82,12 +81,14 @@ const Menus = ({ children }) => {
       {children}
     </MenusContext.Provider>
   );
-};
+}
 
-const Toggle = ({ id }) => {
+function Toggle({ id }) {
   const { openId, close, open, setPosition } = useContext(MenusContext);
 
-  const handleClick = (e) => {
+  function handleClick(e) {
+    e.stopPropagation();
+
     const rect = e.target.closest("button").getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
@@ -95,18 +96,18 @@ const Toggle = ({ id }) => {
     });
 
     openId === "" || openId !== id ? open(id) : close();
-  };
+  }
 
   return (
     <StyledToggle onClick={handleClick}>
       <HiEllipsisVertical />
     </StyledToggle>
   );
-};
+}
 
-const List = ({ id, children }) => {
+function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
 
   if (openId !== id) return null;
 
@@ -116,15 +117,15 @@ const List = ({ id, children }) => {
     </StyledList>,
     document.body
   );
-};
+}
 
-const Button = ({ children, icon, onClick }) => {
+function Button({ children, icon, onClick }) {
   const { close } = useContext(MenusContext);
 
-  const handleClick = () => {
+  function handleClick() {
     onClick?.();
     close();
-  };
+  }
 
   return (
     <li>
@@ -134,7 +135,7 @@ const Button = ({ children, icon, onClick }) => {
       </StyledButton>
     </li>
   );
-};
+}
 
 Menus.Menu = Menu;
 Menus.Toggle = Toggle;

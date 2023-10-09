@@ -1,32 +1,7 @@
-// React Router
 import { Outlet } from "react-router-dom";
-// Styled-components
-import styled from "styled-components";
-// UI
-import Header from "./Header";
 import Sidebar from "./Sidebar";
-
-const AppLayout = () => {
-  return (
-    <StyledAppLayout>
-      <Header />
-      <Sidebar />
-      <Main>
-        <Container>
-          <Outlet />
-        </Container>
-      </Main>
-    </StyledAppLayout>
-  );
-};
-
-const Container = styled.div`
-  max-width: 120rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-`;
+import Header from "./Header";
+import styled from "styled-components";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -40,5 +15,27 @@ const Main = styled.main`
   padding: 4rem 4.8rem 6.4rem;
   overflow: scroll;
 `;
+
+const Container = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+`;
+
+function AppLayout() {
+  return (
+    <StyledAppLayout>
+      <Header />
+      <Sidebar />
+      <Main>
+        <Container>
+          <Outlet />
+        </Container>
+      </Main>
+    </StyledAppLayout>
+  );
+}
 
 export default AppLayout;

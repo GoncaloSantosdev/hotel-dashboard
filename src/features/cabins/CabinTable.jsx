@@ -1,14 +1,12 @@
-/* eslint-disable no-unused-vars */
-import { useSearchParams } from "react-router-dom";
-
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
 
-const CabinTable = () => {
+function CabinTable() {
   const { isLoading, cabins } = useCabins();
   const [searchParams] = useSearchParams();
 
@@ -46,12 +44,14 @@ const CabinTable = () => {
         </Table.Header>
 
         <Table.Body
+          // data={cabins}
+          // data={filteredCabins}
           data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />
       </Table>
     </Menus>
   );
-};
+}
 
 export default CabinTable;

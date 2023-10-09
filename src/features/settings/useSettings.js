@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSettings } from "../../services/apiSettings";
 
-export const useSettings = () => {
+export function useSettings() {
   const {
     isLoading,
     error,
@@ -12,4 +12,4 @@ export const useSettings = () => {
   });
 
   return { isLoading, error, settings };
-};
+}

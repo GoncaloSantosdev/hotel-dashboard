@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
 
 import Input from "../../ui/Input";
@@ -12,7 +10,7 @@ import FormRow from "../../ui/FormRow";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
 
-const CreateCabinForm = ({ cabinToEdit = {}, onCloseModal }) => {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { isCreating, createCabin } = useCreateCabin();
   const { isEditing, editCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
@@ -44,6 +42,7 @@ const CreateCabinForm = ({ cabinToEdit = {}, onCloseModal }) => {
         {
           onSuccess: (data) => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -154,6 +153,6 @@ const CreateCabinForm = ({ cabinToEdit = {}, onCloseModal }) => {
       </FormRow>
     </Form>
   );
-};
+}
 
 export default CreateCabinForm;
