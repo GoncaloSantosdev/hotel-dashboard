@@ -1,4 +1,17 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
+
+const Select = ({ options, value, onChange, ...props }) => {
+  return (
+    <StyledSelect value={value} onChange={onChange} {...props}>
+      {options.map((option) => (
+        <option value={option.value} key={option.value}>
+          {option.label}
+        </option>
+      ))}
+    </StyledSelect>
+  );
+};
 
 const StyledSelect = styled.select`
   font-size: 1.4rem;
@@ -13,3 +26,5 @@ const StyledSelect = styled.select`
   font-weight: 500;
   box-shadow: var(--shadow-sm);
 `;
+
+export default Select;
