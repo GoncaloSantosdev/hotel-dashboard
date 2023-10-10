@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useMutation } from "@tanstack/react-query";
 import { signup as signupApi } from "../../services/apiAuth";
 import { toast } from "react-hot-toast";
